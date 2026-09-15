@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portail CENTIF - Accueil</title>
+<style>
+  :root {
+    --teal-dark: #0b3d3a;
+    --teal-main: #0e6b63;
+    --teal-light: #1a9c8f;
+    --green-accent: #4caf50;
+    --gold-accent: #c9a227;
+    --bg-soft: #f4f8f7;
+    --text-light: #f5f5f5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg-soft);
+    color: #1c1c1c;
+  }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, var(--teal-dark), var(--teal-main));
+    color: var(--text-light);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .logo-area img {
+    height: 48px;
+    border-radius: 6px;
+    background: white;
+    padding: 4px;
+  }
+
+  .logo-area h1 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+  }
+
+  nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.9;
+    transition: opacity 0.2s, border-bottom 0.2s;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+  }
+
+  nav a:hover {
+    opacity: 1;
+    border-bottom: 2px solid var(--gold-accent);
+  }
+
+  /* HERO / MOT DU PRESIDENT */
+  .hero {
+    position: relative;
+    background: linear-gradient(120deg, var(--teal-main) 0%, var(--teal-light) 100%);
+    color: var(--text-light);
+    padding: 70px 60px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: -120px;
+    left: -60px;
+    width: 250px;
+    height: 250px;
+    background: rgba(76,175,80,0.15);
+    border-radius: 50%;
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-label {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 13px;
+    color: var(--gold-accent);
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .hero h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  .hero p {
+    font-size: 16px;
+    line-height: 1.8;
+    opacity: 0.95;
+    margin-bottom: 16px;
+  }
+
+  .signature {
+    text-align: right;
+    font-style: italic;
+    margin-top: 24px;
+    font-weight: 600;
+    color: var(--gold-accent);
+  }
+
+  /* QUICK LINKS */
+  .section-title {
+    text-align: center;
+    margin: 50px 0 30px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--teal-dark);
+    position: relative;
+  }
+
+  .section-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--gold-accent);
+    margin: 10px auto 0;
+    border-radius: 2px;
+  }
+
+  .quick-links {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+  }
+
+  .link-card {
+    background: white;
+    border-radius: 14px;
+    padding: 28px 18px;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(11,61,58,0.08);
+    border: 1px solid rgba(11,61,58,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+
+  .link-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(11,61,58,0.18);
+  }
+
+  .link-icon {
+    width: 46px;
+    height: 46px;
+    margin: 0 auto 14px;
+    background: linear-gradient(135deg, var(--teal-main), var(--green-accent));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .link-card span {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--teal-dark);
+  }
+
+  /* IMAGE STRIP */
+  .image-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--teal-dark);
+  }
+
+  .image-strip div {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+  }
+
+  .image-strip div:hover { opacity: 1; }
+
+  /* NEWS */
+  .news {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  .news-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .news-card {
+    background: white;
+    border-left: 4px solid var(--green-accent);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+
+  .news-card h4 {
+    color: var(--teal-dark);
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
+
+  .news-card p {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  .news-date {
+    font-size: 11px;
+    color: var(--gold-accent);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--teal-dark);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 24px;
+    font-size: 13px;
+  }
+
+  @media (max-width: 768px) {
+    header { flex-direction: column; gap: 14px; padding: 16px 20px; }
+    nav ul { flex-wrap: wrap; justify-content: center; gap: 14px; }
+    .hero { padding: 40px 24px; }
+    .image-strip { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-area">
+      <img src="LOGO_URL_ICI" alt="Logo CENTIF">
+      <h1>Accueil Intranet</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Secrétariat Général</a></li>
+        <li><a href="#">RH</a></li>
+        <li><a href="#">DSI</a></li>
+        <li><a href="#">DEA</a></li>
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">Centre des archives</a></li>
+        <li><a href="#">CNLBCFT</a></li>
+        <li><a href="#">GAFI</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-label">Mot du Président</span>
+      <p>Pour être plus efficace et répondre aux exigences de plus en plus pressantes, la CENTIF met à la disposition des ses agents et du Comité LBC-FT les outils technologiques adéquats qui s'articulent autour de l'intranet.</p>
+      <p>Cette plateforme aide à instaurer un cadre innovant pour une meilleure collaboration, une meilleure communication et une meilleure productivité. L'objectif est de permettre à la CENTIF et au Comité LBC-FT d'être interconnectés et de travailler en parfaite synergie.</p>
+      <p>Avec cet outil, la CENTIF peut ainsi surfer sur la vague de la révolution numérique tout en préservant les fondements de son administration et ses acquis en termes de gouvernance qui font d'elle une référence dans la sous-région.</p>
+      <p>Au sein de la CENTIF, nous avons adopté cet outil parce que notre démarche se veut innovante. J'invite l'ensemble des collaborateurs à s'en approprier et à en faire bon usage.</p>
+      <div class="signature">Le Président.</div>
+    </div>
+  </section>
+
+  <h2 class="section-title">Liens rapides</h2>
+  <div class="quick-links">
+    <div class="link-card"><div class="link-icon">&#10003;</div><span>Mes tâches</span></div>
+    <div class="link-card"><div class="link-icon">&#9729;</div><span>Mon espace OneDrive</span></div>
+    <div class="link-card"><div class="link-icon">&#128197;</div><span>Gestion des absences</span></div>
+    <div class="link-card"><div class="link-icon">&#128101;</div><span>Mes groupes de travail</span></div>
+    <div class="link-card"><div class="link-icon">&#128172;</div><span>Mon réseau social</span></div>
+    <div class="link-card"><div class="link-icon">&#128231;</div><span>Gestion du courrier</span></div>
+    <div class="link-card"><div class="link-icon">&#127909;</div><span>Mon espace vidéo</span></div>
+    <div class="link-card"><div class="link-icon">&#128221;</div><span>Mes bloc-notes</span></div>
+    <div class="link-card"><div class="link-icon">&#9889;</div><span>Mes activités récentes</span></div>
+    <div class="link-card"><div class="link-icon">&#9993;</div><span>Ma messagerie</span></div>
+  </div>
+
+  <div class="image-strip">
+    <div style="background-image:url('IMAGE_URL_1')"></div>
+    <div style="background-image:url('IMAGE_URL_2')"></div>
+    <div style="background-image:url('IMAGE_URL_3')"></div>
+  </div>
+
+  <section class="news">
+    <h2 class="section-title">Actualités</h2>
+    <div class="news-list">
+      <div class="news-card">
+        <span class="news-date">À compléter</span>
+        <h4>Titre de l'actualité</h4>
+        <p>Contenu de l'actualité à remplir.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 CENTIF — Portail Intranet
+  </footer>
+
+</body>
+</html>
